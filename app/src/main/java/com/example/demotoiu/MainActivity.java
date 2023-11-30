@@ -124,47 +124,6 @@ public class MainActivity extends AppCompatActivity {
             });
         });
 
-        mainBinding.btnTestSparseArray.setOnClickListener(view1 -> {
-            handlerThread = new HandlerThread("PerformanceHandlerThread");
-            handlerThread.start();
-            handler = new Handler(handlerThread.getLooper());
-
-            // Lấy mức pin ban đầu
-            startBatteryLevel = getBatteryLevel();
-
-            handler.post(() -> {
-                //Todo: Thực hiện công việc đo CPU Usage và bộ nhớ sử dụng
-                PerformanceResult result = measurePerformance(() -> {
-                    SparseArray<Integer> sparseArray = new SparseArray<>();
-                    // Thêm một lượng lớn dữ liệu vào ArrayMap
-                    for (int i = 0; i < 10000; i++) {
-                        sparseArray.put(i, i);
-                    }
-                    // Truy cập và in ra một số giá trị
-                    for (int i = 0; i < 1000; i++) {
-                        int randomIndex = (int) (Math.random() * sparseArray.size());
-                        int randomKey = sparseArray.keyAt(randomIndex);
-                        int randomValue = sparseArray.valueAt(randomIndex);
-                        System.out.println("Value for key '" + randomKey + "' in ArrayMap: " + randomValue);
-                    }
-                    // Tính tổng của tất cả các giá trị trong ArrayMap
-                    int sum = 0;
-                    for (int i = 0; i < sparseArray.size(); i++) {
-                        sum += sparseArray.valueAt(i);
-                    }
-
-                    System.out.println("Sum of all values in ArrayMap: " + sum);
-                });
-
-                runOnUiThread(() -> {
-                    mainBinding.textViewCpuSparseArray.setText("CPU Usage: " + result.cpuUsage + "%");
-                    mainBinding.textViewMemorySparseArray.setText("Memory Usage: " + result.memoryUsage + " KB");
-                    mainBinding.textViewEnergySparseArray.setText("Energy Usage: " + calculateEnergyUsage() + " mWh");
-                });
-
-                handlerThread.quit();
-            });
-        });
     }
 
     @Override
