@@ -50,19 +50,22 @@ public class MainActivity extends AppCompatActivity {
             handler.post(() -> {
                 //Todo: Thực hiện công việc đo CPU Usage và bộ nhớ sử dụng
                 PerformanceResult result = measurePerformance(() -> {
-                    ArrayMap<String, Integer> arrayMap = new ArrayMap<>();
+                    ArrayMap<Integer, Integer> arrayMap = new ArrayMap<>();
+
                     // Thêm một lượng lớn dữ liệu vào ArrayMap
                     for (int i = 0; i < 10000; i++) {
-                        arrayMap.put("Key" + i, i);
+                        arrayMap.put(i, i);
                     }
+
                     // Truy cập và in ra một số giá trị
                     for (int i = 0; i < 1000; i++) {
                         int randomIndex = (int) (Math.random() * arrayMap.size());
-                        String randomKey = arrayMap.keyAt(randomIndex);
+                        int randomKey = arrayMap.keyAt(randomIndex);
                         int randomValue = arrayMap.valueAt(randomIndex);
-                        System.out.println("Value for key '" + randomKey + "' in ArrayMap: " + randomValue);
+                        System.out.println("Value for key " + randomKey + " in ArrayMap: " + randomValue);
                     }
-                // Tính tổng của tất cả các giá trị trong ArrayMap
+
+                    // Tính tổng của tất cả các giá trị trong ArrayMap
                     int sum = 0;
                     for (int i = 0; i < arrayMap.size(); i++) {
                         sum += arrayMap.valueAt(i);
@@ -92,11 +95,11 @@ public class MainActivity extends AppCompatActivity {
             handler.post(() -> {
                 //Todo: Thực hiện công việc đo CPU Usage và bộ nhớ sử dụng
                 PerformanceResult result = measurePerformance(() -> {
-                    HashMap<String, Integer> hashMap = new HashMap<>();
+                    HashMap<Integer, Integer> hashMap = new HashMap<>();
 
                     // Thêm một lượng lớn dữ liệu vào HashMap
                     for (int i = 0; i < 10000; i++) {
-                        hashMap.put("Key" + i, i);
+                        hashMap.put( i, i);
                     }
                     // Truy cập và in ra một số giá trị
                     for (int i = 0; i < 1000; i++) {
