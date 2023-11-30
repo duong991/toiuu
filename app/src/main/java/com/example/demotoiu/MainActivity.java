@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.util.ArrayMap;
+import android.util.LongSparseArray;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.Toast;
@@ -50,19 +51,22 @@ public class MainActivity extends AppCompatActivity {
             handler.post(() -> {
                 //Todo: Thực hiện công việc đo CPU Usage và bộ nhớ sử dụng
                 PerformanceResult result = measurePerformance(() -> {
-                    ArrayMap<String, Integer> arrayMap = new ArrayMap<>();
+                    ArrayMap<Long, Integer> arrayMap = new ArrayMap<>();
+
                     // Thêm một lượng lớn dữ liệu vào ArrayMap
                     for (int i = 0; i < 10000; i++) {
-                        arrayMap.put("Key" + i, i);
+                        arrayMap.put((long) i, i);
                     }
+
                     // Truy cập và in ra một số giá trị
                     for (int i = 0; i < 1000; i++) {
                         int randomIndex = (int) (Math.random() * arrayMap.size());
-                        String randomKey = arrayMap.keyAt(randomIndex);
+                        long randomKey = arrayMap.keyAt(randomIndex);
                         int randomValue = arrayMap.valueAt(randomIndex);
-                        System.out.println("Value for key '" + randomKey + "' in ArrayMap: " + randomValue);
+                        System.out.println("Value for key " + randomKey + " in ArrayMap: " + randomValue);
                     }
-                // Tính tổng của tất cả các giá trị trong ArrayMap
+
+                    // Tính tổng của tất cả các giá trị trong ArrayMap
                     int sum = 0;
                     for (int i = 0; i < arrayMap.size(); i++) {
                         sum += arrayMap.valueAt(i);
@@ -92,18 +96,19 @@ public class MainActivity extends AppCompatActivity {
             handler.post(() -> {
                 //Todo: Thực hiện công việc đo CPU Usage và bộ nhớ sử dụng
                 PerformanceResult result = measurePerformance(() -> {
-                    HashMap<String, Integer> hashMap = new HashMap<>();
+                    HashMap<Long, Integer> hashMap = new HashMap<>();
 
-                    // Thêm một lượng lớn dữ liệu vào HashMap
+                // Thêm một lượng lớn dữ liệu vào HashMap
                     for (int i = 0; i < 10000; i++) {
-                        hashMap.put("Key" + i, i);
+                        hashMap.put((long) i, i);
                     }
-                    // Truy cập và in ra một số giá trị
+
+                // Truy cập và in ra một số giá trị
                     for (int i = 0; i < 1000; i++) {
                         int randomIndex = (int) (Math.random() * hashMap.size());
-                        String randomKey = (String) hashMap.keySet().toArray()[randomIndex];
+                        Long randomKey = (Long) hashMap.keySet().toArray()[randomIndex];
                         int randomValue = hashMap.get(randomKey);
-                        System.out.println("Value for key '" + randomKey + "' in HashMap: " + randomValue);
+                        System.out.println("Value for key " + randomKey + " in HashMap: " + randomValue);
                     }
                     // Tính tổng của tất cả các giá trị trong HashMap
                     int sum = 0;
@@ -135,25 +140,28 @@ public class MainActivity extends AppCompatActivity {
             handler.post(() -> {
                 //Todo: Thực hiện công việc đo CPU Usage và bộ nhớ sử dụng
                 PerformanceResult result = measurePerformance(() -> {
-                    SparseArray<Integer> sparseArray = new SparseArray<>();
-                    // Thêm một lượng lớn dữ liệu vào ArrayMap
+                    LongSparseArray<Integer> longSparseArray = new LongSparseArray<>();
+
+              // Thêm một lượng lớn dữ liệu vào LongSparseArray
                     for (int i = 0; i < 10000; i++) {
-                        sparseArray.put(i, i);
-                    }
-                    // Truy cập và in ra một số giá trị
-                    for (int i = 0; i < 1000; i++) {
-                        int randomIndex = (int) (Math.random() * sparseArray.size());
-                        int randomKey = sparseArray.keyAt(randomIndex);
-                        int randomValue = sparseArray.valueAt(randomIndex);
-                        System.out.println("Value for key '" + randomKey + "' in ArrayMap: " + randomValue);
-                    }
-                    // Tính tổng của tất cả các giá trị trong ArrayMap
-                    int sum = 0;
-                    for (int i = 0; i < sparseArray.size(); i++) {
-                        sum += sparseArray.valueAt(i);
+                        longSparseArray.put((long) i, i);
                     }
 
-                    System.out.println("Sum of all values in ArrayMap: " + sum);
+             // Truy cập và in ra một số giá trị
+                    for (int i = 0; i < 1000; i++) {
+                        int randomIndex = (int) (Math.random() * longSparseArray.size());
+                        long randomKey = longSparseArray.keyAt(randomIndex);
+                        int randomValue = longSparseArray.valueAt(randomIndex);
+                        System.out.println("Value for key " + randomKey + " in LongSparseArray: " + randomValue);
+                    }
+
+             // Tính tổng của tất cả các giá trị trong LongSparseArray
+                    int sum = 0;
+                    for (int i = 0; i < longSparseArray.size(); i++) {
+                        sum += longSparseArray.valueAt(i);
+                    }
+
+                    System.out.println("Sum of all values in LongSparseArray: " + sum);
                 });
 
                 runOnUiThread(() -> {
