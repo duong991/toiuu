@@ -53,12 +53,12 @@ public class MainActivity extends AppCompatActivity {
                     ArrayMap<Integer, Integer> arrayMap = new ArrayMap<>();
 
                     // Thêm một lượng lớn dữ liệu vào ArrayMap
-                    for (int i = 0; i < 10000; i++) {
+                    for (int i = 0; i < 1000; i++) {
                         arrayMap.put(i, i);
                     }
 
                     // Truy cập và in ra một số giá trị
-                    for (int i = 0; i < 1000; i++) {
+                    for (int i = 0; i < 100; i++) {
                         int randomIndex = (int) (Math.random() * arrayMap.size());
                         int randomKey = arrayMap.keyAt(randomIndex);
                         int randomValue = arrayMap.valueAt(randomIndex);
@@ -98,13 +98,13 @@ public class MainActivity extends AppCompatActivity {
                     HashMap<Integer, Integer> hashMap = new HashMap<>();
 
                     // Thêm một lượng lớn dữ liệu vào HashMap
-                    for (int i = 0; i < 10000; i++) {
+                    for (int i = 0; i < 1000; i++) {
                         hashMap.put( i, i);
                     }
                     // Truy cập và in ra một số giá trị
-                    for (int i = 0; i < 1000; i++) {
+                    for (int i = 0; i < 100; i++) {
                         int randomIndex = (int) (Math.random() * hashMap.size());
-                        String randomKey = (String) hashMap.keySet().toArray()[randomIndex];
+                        int randomKey = (int) hashMap.keySet().toArray()[randomIndex];
                         int randomValue = hashMap.get(randomKey);
                         System.out.println("Value for key '" + randomKey + "' in HashMap: " + randomValue);
                     }
@@ -140,11 +140,11 @@ public class MainActivity extends AppCompatActivity {
                 PerformanceResult result = measurePerformance(() -> {
                     SparseArray<Integer> sparseArray = new SparseArray<>();
                     // Thêm một lượng lớn dữ liệu vào ArrayMap
-                    for (int i = 0; i < 10000; i++) {
+                    for (int i = 0; i < 1000; i++) {
                         sparseArray.put(i, i);
                     }
                     // Truy cập và in ra một số giá trị
-                    for (int i = 0; i < 1000; i++) {
+                    for (int i = 0; i < 100; i++) {
                         int randomIndex = (int) (Math.random() * sparseArray.size());
                         int randomKey = sparseArray.keyAt(randomIndex);
                         int randomValue = sparseArray.valueAt(randomIndex);
