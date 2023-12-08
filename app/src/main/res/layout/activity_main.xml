@@ -43,6 +43,17 @@
         app:layout_constraintTop_toBottomOf="@+id/appCompatTextView"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="-16dp" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_kieu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Long Int"
+        android:layout_marginTop="8dp"
+        android:textSize="24sp"
+        android:textColor="#34404B"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2"
+        tools:ignore="MissingConstraints" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/appCompatTextView3"
@@ -53,7 +64,7 @@
         android:textColor="#34404B"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2"
+        app:layout_constraintTop_toBottomOf="@+id/tv_kieu"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="-1dp" />
 

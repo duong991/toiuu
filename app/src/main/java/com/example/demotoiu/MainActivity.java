@@ -54,12 +54,12 @@ public class MainActivity extends AppCompatActivity {
                     ArrayMap<Long, Integer> arrayMap = new ArrayMap<>();
 
                     // Thêm một lượng lớn dữ liệu vào ArrayMap
-                    for (int i = 0; i < 10000; i++) {
+                    for (int i = 0; i < 1000; i++) {
                         arrayMap.put((long) i, i);
                     }
 
                     // Truy cập và in ra một số giá trị
-                    for (int i = 0; i < 1000; i++) {
+                    for (int i = 0; i < 100; i++) {
                         int randomIndex = (int) (Math.random() * arrayMap.size());
                         long randomKey = arrayMap.keyAt(randomIndex);
                         int randomValue = arrayMap.valueAt(randomIndex);
@@ -99,12 +99,12 @@ public class MainActivity extends AppCompatActivity {
                     HashMap<Long, Integer> hashMap = new HashMap<>();
 
                 // Thêm một lượng lớn dữ liệu vào HashMap
-                    for (int i = 0; i < 10000; i++) {
+                    for (int i = 0; i < 1000; i++) {
                         hashMap.put((long) i, i);
                     }
 
                 // Truy cập và in ra một số giá trị
-                    for (int i = 0; i < 1000; i++) {
+                    for (int i = 0; i < 100; i++) {
                         int randomIndex = (int) (Math.random() * hashMap.size());
                         Long randomKey = (Long) hashMap.keySet().toArray()[randomIndex];
                         int randomValue = hashMap.get(randomKey);
@@ -143,12 +143,12 @@ public class MainActivity extends AppCompatActivity {
                     LongSparseArray<Integer> longSparseArray = new LongSparseArray<>();
 
               // Thêm một lượng lớn dữ liệu vào LongSparseArray
-                    for (int i = 0; i < 10000; i++) {
+                    for (int i = 0; i < 1000; i++) {
                         longSparseArray.put((long) i, i);
                     }
 
              // Truy cập và in ra một số giá trị
-                    for (int i = 0; i < 1000; i++) {
+                    for (int i = 0; i < 100; i++) {
                         int randomIndex = (int) (Math.random() * longSparseArray.size());
                         long randomKey = longSparseArray.keyAt(randomIndex);
                         int randomValue = longSparseArray.valueAt(randomIndex);
