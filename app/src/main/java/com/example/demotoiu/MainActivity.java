@@ -52,11 +52,11 @@ public class MainActivity extends AppCompatActivity {
                 PerformanceResult result = measurePerformance(() -> {
                     ArrayMap<String, Integer> arrayMap = new ArrayMap<>();
                     // Thêm một lượng lớn dữ liệu vào ArrayMap
-                    for (int i = 0; i < 10000; i++) {
+                    for (int i = 0; i < 1000; i++) {
                         arrayMap.put("Key" + i, i);
                     }
                     // Truy cập và in ra một số giá trị
-                    for (int i = 0; i < 1000; i++) {
+                    for (int i = 0; i < 100; i++) {
                         int randomIndex = (int) (Math.random() * arrayMap.size());
                         String randomKey = arrayMap.keyAt(randomIndex);
                         int randomValue = arrayMap.valueAt(randomIndex);
@@ -95,11 +95,11 @@ public class MainActivity extends AppCompatActivity {
                     HashMap<String, Integer> hashMap = new HashMap<>();
 
                     // Thêm một lượng lớn dữ liệu vào HashMap
-                    for (int i = 0; i < 10000; i++) {
+                    for (int i = 0; i < 1000; i++) {
                         hashMap.put("Key" + i, i);
                     }
                     // Truy cập và in ra một số giá trị
-                    for (int i = 0; i < 1000; i++) {
+                    for (int i = 0; i < 100; i++) {
                         int randomIndex = (int) (Math.random() * hashMap.size());
                         String randomKey = (String) hashMap.keySet().toArray()[randomIndex];
                         int randomValue = hashMap.get(randomKey);
