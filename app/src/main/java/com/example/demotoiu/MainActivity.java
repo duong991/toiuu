@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             handler = new Handler(handlerThread.getLooper());
 
             // Lấy mức pin ban đầu
-            startBatteryLevel = getBatteryLevel();
+            startBatteryLevel = getBatteryVoltage();
 
             handler.post(() -> {
                 //Todo: Thực hiện công việc đo CPU Usage và bộ nhớ sử dụng
@@ -186,9 +186,16 @@ public class MainActivity extends AppCompatActivity {
 
         return (level / (double) scale) * 100.0;
     }
+    private double getBatteryVoltage() {
+        IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+        Intent batteryStatus = registerReceiver(null, ifilter);
 
+        int voltage = batteryStatus.getIntExtra(BatteryManager.EXTRA_VOLTAGE, -1);
+
+        return voltage / 1000.0; // Convert millivolts to volts
+    }
     private double calculateEnergyUsage() {
-        double currentBatteryLevel =  getBatteryLevel();
+        double currentBatteryLevel =  getBatteryVoltage();
         double energyConsumed = (startBatteryLevel - currentBatteryLevel);
 
         // Nếu có thêm thông số về pin như điện thế, bạn có thể tính toán năng lượng tiêu thụ chính xác hơn
